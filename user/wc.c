@@ -66,7 +66,7 @@ void wc(int fd, char *name) {
     exit(1);
   }
 
-  if (!flags_specified) {
+  if (!flags_specified && name[0] != '\0') {
     printf("%d %d %d %s\n", l, w, c, name);
   }
 
@@ -86,8 +86,7 @@ void wc(int fd, char *name) {
 
 int main(int argc, char *argv[]) {
   int fd, i;
-  int files_processed = 0;
-
+  
   for (i = 1; i < argc; i++) {
     if (strcmp(argv[i], "-p") == 0) {
       count_punct = 1;
@@ -111,13 +110,8 @@ int main(int argc, char *argv[]) {
           }
           wc(fd, argv[i]);
           close(fd);
-          files_processed = 1;
         }
       }
-
-  if (!files_processed) {
-    printf("No file processed");
-  }
 
   exit(0);
 }
