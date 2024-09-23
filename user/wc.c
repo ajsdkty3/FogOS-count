@@ -26,6 +26,20 @@ int is_punctuation(char c) {
          c == '{' || c == '}' || c == '-' || c == '_';
 }
 
+/**
+ * Counts the number of lines, words, and characters from the file descriptor `fd`.
+ * Or counts punctuation marks, digits, uppercase, and lowercase letters,
+ * based on flags.
+ *
+ * Flags:
+ * - `-p` : Count punctuation marks.
+ * - `-d` : Count digits.
+ * - `-u` : Count uppercase letters.
+ * - `-l` : Count lowercase letters.
+ *
+ * @param fd the file descriptor to read from
+ * @param name the name of the file being processed
+ */
 void wc(int fd, char *name) {
   int i, n;
   int l, w, c, inword;
